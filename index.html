@@ -71,8 +71,8 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .ritual{display:grid;grid-template-rows:84px 1fr;justify-items:center;height:100%;text-align:center}
 .ritual-body{grid-row:2;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%}
 .ritual h2{align-self:center;margin:0;padding:5px 18px 8px;border-radius:30px;background:#fff8eecf}
-.stage{width:380px;height:380px;position:relative;margin:2px auto 0}
-.portrait{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:270px;height:270px;border-radius:50%;border:7px solid #d4af37;background:linear-gradient(145deg,#3d1f9c,#1b1054);box-shadow:0 0 0 2px #241068,0 14px 25px #0a0c382d;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage{width:min(380px,74vw);height:min(380px,74vw);position:relative;margin:2px auto 0}
+.portrait{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(270px,68vw);height:min(270px,68vw);border-radius:50%;border:7px solid #d4af37;background:linear-gradient(145deg,#3d1f9c,#1b1054);box-shadow:0 0 0 2px #241068,0 14px 25px #0a0c382d;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .portrait img{height:100%;width:auto;max-width:none;display:block}
 .portrait span{font:76px "Yatra One";color:#ffe382;text-shadow:0 2px #241068}
 .diya-orbit{position:absolute;inset:0;animation:none;z-index:6}
@@ -85,7 +85,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 @keyframes orbit{to{transform:rotate(360deg)}}
 .tilak{position:absolute;bottom:60.9%;left:calc(50% + 1px);height:0;width:10px;background:#c51f35;border-radius:10px;box-shadow:0 1px #f9d063;transition:height 1.25s cubic-bezier(.2,.8,.25,1);z-index:9}
 .tilak.on{height:22px}
-.rakhi-stage{height:380px;width:min(560px,100%);position:relative;margin:0 auto;display:grid;place-items:center}
+.rakhi-stage{height:min(380px,58vw);width:min(560px,100%);position:relative;margin:0 auto;display:grid;place-items:center}
 .wrist-photo-wrap{width:190px;height:135px;border-radius:60px;overflow:hidden;position:relative}
 .wrist-photo-wrap.has-photo{box-shadow:0 0 0 5px #d4af37,0 10px 18px #0a0c3833}
 .wrist-photo-wrap img{width:100%;height:100%;object-fit:cover}
@@ -127,7 +127,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .collage-wrap canvas{max-width:min(420px,86vw);border-radius:10px;box-shadow:0 10px 22px #0a0c3844}
 .cam-error{color:#3d1f9c;font-size:12px;margin-top:10px;max-width:320px;display:none}
 .cam-error.show{display:block}
-.final{display:block;overflow-y:auto!important;padding:0;background:#fff9e9;scrollbar-color:#3d1f9c #fff1c2}
+.final{display:block;overflow-y:auto!important;padding:0;background:#fff9e9;scrollbar-color:#3d1f9c #fff1c2;backface-visibility:visible;-webkit-overflow-scrolling:touch;touch-action:pan-y}
 .end-banner{min-height:250px;display:grid;place-items:center;text-align:center;padding:44px 24px;background:linear-gradient(120deg,#1b1054,#3d1f9c 52%,#4a1fb0);color:#fff8e1}
 .end-banner h2{color:#fff9d9;text-shadow:0 2px #0a0c38}
 .end-banner .mini{color:#ffde71}
@@ -148,7 +148,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .letter p{max-width:500px;margin:16px auto;font:500 21px/1.55 "Cormorant Garamond"}
 .signature{font:24px "Yatra One";color:#ffe378}
 .restart{margin:0 0 42px}
-@media(max-width:600px){.book{height:88vh}.face{padding:30px 18px}.stage{transform:scale(.56);margin:-84px auto -70px}.rakhi-stage{transform:scale(.62);width:118%;margin:-90px -9%}.sweet-stage{transform:scale(.85);margin:-8px 0}.photos-sec{padding:32px 18px}.letter{margin:0 18px 34px}.cover p{font-size:18px}.cam-wrap{width:230px;height:230px}}
+@media(max-width:600px){.book{height:88vh}.face{padding:30px 18px}.ritual{grid-template-rows:58px 1fr}.sweet-stage{transform:scale(.85);margin:-8px 0}.photos-sec{padding:32px 18px}.letter{margin:0 18px 34px}.cover p{font-size:18px}.cam-wrap{width:230px;height:230px}}
 </style></head><body>
 <div class="bokeh" id="bokeh"></div><div class="bg-emojis" id="bgEmojis"></div><div class="sparkles" id="sparkles"></div>
 <audio id="bgAudio" loop></audio>
@@ -193,11 +193,11 @@ const PERSON_DATA = [
   // it'll just be skipped gracefully.
   { password: "test1234", name: "Test Sister", photo: "", letter: "This is a placeholder note — real ones get added per person." },
   { password: "heeru2102", name: "Heer", photo: "photos/photo-heer.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "dishu2709", name: "Dishani", photo: "photos/photo-dishani2.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "kanu1306", name: "Kanisha", photo: "photos/photo-kanisha.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "dishu2709", name: "Dishani", photo: "photos/photo-dishan.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "kanu1306", name: "Kanisha", photo: "photos/photo-kanish.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "vamu1204", name: "Vama", photo: "photos/photo-vama.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "pratu2206", name: "Prarthana", photo: "photos/photo-prarthana.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "dinka2510", name: "Drishti", photo: "photos/photo-drishti.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "pratu2206", name: "Prarthana", photo: "photos/photo-prarth.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "dinka2510", name: "Drishti", photo: "photos/photo-drisht.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "dhruva1501", name: "Dhruvi", photo: "photos/photo-dhruvi.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "diku1905", name: "Diksha", photo: "photos/photo-diksha.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "snehu2307", name: "Sneha", photo: "photos/photo-sneha.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     reader.readAsDataURL(file);
   });
   document.getElementById('retakeBtn').addEventListener('click',retakePhoto);
-  tryLoadPhoto('alwaysSlot','photos/photo-rakhi-collection.jpg');
+  tryLoadPhoto('alwaysSlot','photos/photo-years.jpg');
   document.getElementById('passwordInput').addEventListener('keydown',function(e){if(e.key==='Enter')submitPassword();});
 });
 function tryLoadPhoto(slotId,filename){
