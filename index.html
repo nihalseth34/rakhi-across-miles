@@ -30,7 +30,7 @@ body:after{background:radial-gradient(circle,#d4af37,transparent 62%);right:-44v
 .page{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.63,.04,.3,.97);z-index:1;pointer-events:none}
 .page.active{pointer-events:auto;z-index:3}
 .page.turned{transform:rotateY(-180deg);z-index:5}
-.face{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden;padding:clamp(25px,5vw,50px);background:var(--paper);border:1px solid #d9b45f;box-shadow:inset 0 0 44px #24106814}
+.face{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden;padding:clamp(25px,5vw,50px);background:var(--paper);border:3px solid #d4af37;box-shadow:inset 0 0 0 6px #fff8e7,inset 0 0 0 7px #d4af3766,inset 0 0 44px #24106814}
 .back{transform:rotateY(180deg);background:linear-gradient(135deg,#f0cf7c,#9a2fb0)}
 .page:after{content:"";position:absolute;top:0;bottom:0;left:0;width:16px;background:linear-gradient(90deg,#1b105445,transparent);opacity:.4;pointer-events:none}
 .ornament{position:absolute;font:300px/1 "Cormorant Garamond";color:#1b105412;pointer-events:none;top:-95px;left:-50px}
@@ -92,9 +92,9 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .rakhi-drop{position:absolute;top:50%;left:-320px;width:230px;max-width:none;transform:translateY(-50%);filter:drop-shadow(0 7px 6px #3c10254a);opacity:0;z-index:4}
 .rakhi-drop.fly{animation:slidein 1.3s cubic-bezier(.25,.75,.3,1) forwards}
 @keyframes slidein{0%{left:-320px;opacity:0;transform:translateY(-50%) rotate(-8deg)}20%{opacity:1}70%{left:calc(50% - 105px);opacity:1;transform:translateY(-50%) rotate(3deg)}100%{left:calc(50% - 115px);opacity:0;transform:translateY(-50%) rotate(0deg)}}
-.wrist-rakhi{position:absolute;left:50%;top:50%;width:150px;height:80px;transform:translate(-50%,-50%) rotate(90deg);overflow:visible;opacity:0;z-index:5;filter:drop-shadow(0 3px 3px #3c102555)}
+.wrist-rakhi{position:absolute;left:50%;top:50%;width:120px;height:64px;transform:translate(-50%,-50%) rotate(90deg);overflow:visible;opacity:0;z-index:5;filter:drop-shadow(0 3px 3px #3c102555)}
 .wrist-rakhi.show{opacity:1}
-.wrist-rakhi img{position:absolute;top:50%;left:50%;width:220px;max-width:none;transform:translate(-50%,-50%)}
+.wrist-rakhi img{position:absolute;top:50%;left:50%;width:176px;max-width:none;transform:translate(-50%,-50%)}
 .sweet-stage{height:230px;width:300px;position:relative;display:grid;place-items:center}
 .mithai-page:before{content:"";position:absolute;inset:12px;border-radius:10px;background-image:var(--sweets-bg);background-size:cover;background-position:center 32%;opacity:.15;pointer-events:none;z-index:0}
 .mithai-page>h2,.mithai-page>.ritual-body{z-index:1}
@@ -212,6 +212,16 @@ const SONGS = [
   // One is picked at random every time someone enters a correct password.
   "music/song1.mp3","music/song2.mp3","music/song3.mp3","music/song4.mp3","music/song5.mp3","music/song6.mp3"
 ];
+const LETTERS = [
+  "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. Happy Rakshabandhan \u2014 I'll always be here, just one call away.",
+  "Distance is just a number when the bond is this strong. Every rakhi you've ever tied me is still on my wrist somewhere in my memory. Happy Rakshabandhan \u2014 I love you more than these words can hold.",
+  "I still remember every rakhi ceremony we've ever had \u2014 the fights over who gets more mithai, the photos, all of it. Being far away doesn't change any of that. Happy Rakshabandhan, I love you endlessly.",
+  "You've watched me grow up and I've watched you too, even if it's mostly through a screen these days. That doesn't make it any less real. Happy Rakshabandhan \u2014 thank you for being my person.",
+  "If I could, I'd be sitting right next to you today with a plate of sweets, teasing you like always. Since I can't, just know that my love for you crosses every mile between us. Happy Rakshabandhan.",
+  "Some bonds don't need proximity to stay strong \u2014 ours is proof of that. I carry you with me wherever I go. Happy Rakshabandhan, I love you so much.",
+  "Every year this thread reminds me how lucky I am to have a sister like you. Germany or India, that never changes. Happy Rakshabandhan \u2014 I'm always here for you, always.",
+  "Miles apart but never far from my heart \u2014 cheesy, I know, but true. Thank you for tying rakhis on me for all these years and putting up with me. Happy Rakshabandhan, I love you."
+];
 const GIFT_MESSAGE = "Your gift is already on its way from Germany — until it arrives, consider this your first surprise: I love you more than any parcel could ever say.";
 /* ============================================================
    To add your own wrist photo, place a file named wrist-photo.jpg
@@ -244,7 +254,7 @@ function submitPassword(){
   currentPerson=match;
   document.getElementById('coverMini').textContent='For my dearest '+match.name;
   document.getElementById('letterSalutation').textContent='To my favourite '+match.name+',';
-  document.getElementById('letterBody').textContent=match.letter;
+  document.getElementById('letterBody').textContent=LETTERS[Math.floor(Math.random()*LETTERS.length)];
   if(match.photo){
     tryLoadPhoto('festivalSlot',match.photo);
   }
