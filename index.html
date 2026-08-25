@@ -72,7 +72,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 .ritual-body{grid-row:2;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%}
 .ritual h2{align-self:center;margin:0;padding:5px 18px 8px;border-radius:30px;background:#fff8eecf}
 .stage{width:min(380px,74vw);height:min(380px,74vw);position:relative;margin:2px auto 0}
-.portrait{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(270px,68vw);height:min(270px,68vw);border-radius:50%;border:7px solid #d4af37;background:linear-gradient(145deg,#3d1f9c,#1b1054);box-shadow:0 0 0 2px #241068,0 14px 25px #0a0c382d;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.portrait{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(270px,52.6vw);height:min(270px,52.6vw);border-radius:50%;border:7px solid #d4af37;background:linear-gradient(145deg,#3d1f9c,#1b1054);box-shadow:0 0 0 2px #241068,0 14px 25px #0a0c382d;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .portrait img{height:100%;width:auto;max-width:none;display:block}
 .portrait span{font:76px "Yatra One";color:#ffe382;text-shadow:0 2px #241068}
 .diya-orbit{position:absolute;inset:0;animation:none;z-index:6}
@@ -94,7 +94,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
 @keyframes slidein{0%{left:-320px;opacity:0;transform:translateY(-50%) rotate(-8deg)}20%{opacity:1}70%{left:calc(50% - 105px);opacity:1;transform:translateY(-50%) rotate(3deg)}100%{left:calc(50% - 115px);opacity:0;transform:translateY(-50%) rotate(0deg)}}
 .wrist-rakhi{position:absolute;left:50%;top:50%;width:120px;height:64px;transform:translate(-50%,-50%) rotate(90deg);overflow:visible;opacity:0;z-index:5;filter:drop-shadow(0 3px 3px #3c102555)}
 .wrist-rakhi.show{opacity:1}
-.wrist-rakhi img{position:absolute;top:50%;left:50%;width:176px;max-width:none;transform:translate(-50%,-50%)}
+.wrist-rakhi img{position:absolute;top:50%;left:50%;width:150px;max-width:none;transform:translate(-50%,-50%)}
 .sweet-stage{height:230px;width:300px;position:relative;display:grid;place-items:center}
 .mithai-page:before{content:"";position:absolute;inset:12px;border-radius:10px;background-image:var(--sweets-bg);background-size:cover;background-position:center 32%;opacity:.15;pointer-events:none;z-index:0}
 .mithai-page>h2,.mithai-page>.ritual-body{z-index:1}
@@ -162,7 +162,7 @@ body{background:#fff!important;overflow:visible!important;min-height:auto!import
 body:before,body:after,.bg-emojis,.bokeh,.sparkles,.music-ctrl,.toran{display:none!important}
 .book{position:static!important;width:auto!important;max-width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important;perspective:none!important;filter:none!important;margin:0!important}
 .book:before{display:none!important}
-.page{display:block!important;position:static!important;inset:auto!important;transform:none!important;transform-style:flat!important;page-break-after:always;break-after:page;break-inside:avoid;pointer-events:none!important}
+.page{display:block!important;position:static!important;inset:auto!important;transform:none!important;transform-style:flat!important;page-break-after:always;break-after:page;pointer-events:none!important}
 .page:last-child{page-break-after:auto;break-after:auto}
 .page:after{display:none!important}
 .face{position:static!important;inset:auto!important;overflow:visible!important;backface-visibility:visible!important;height:auto!important;border:none!important;box-shadow:none!important;padding:24px 30px!important}
@@ -171,7 +171,11 @@ body:before,body:after,.bg-emojis,.bokeh,.sparkles,.music-ctrl,.toran{display:no
 button,.password-gate{display:none!important}
 .cam-wrap,.cam-actions,#camPlaceholder,video,.upload-fallback{display:none!important}
 .selfie-sub{display:none!important}
-.photo{page-break-inside:avoid}
+.photos{display:block!important}
+.photo{page-break-inside:avoid!important;break-inside:avoid!important;margin-bottom:16px!important}
+#festivalSlot{page-break-before:always!important;break-before:page!important}
+#alwaysSlot{page-break-before:always!important;break-before:page!important}
+.letter{page-break-before:avoid!important;break-before:avoid!important;page-break-inside:avoid!important;break-inside:avoid!important}
 }
 </style></head><body>
 <div class="bokeh" id="bokeh"></div><div class="bg-emojis" id="bgEmojis"></div><div class="sparkles" id="sparkles"></div>
