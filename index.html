@@ -231,13 +231,16 @@ const PERSON_DATA = [
   { password: "heeru2102", name: "Heer", photo: "photos/photo-heer.jpg", giftItem: "phone", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "dishu2709", name: "Dishani", photo: "photos/photo-dishan.jpg", giftItem: "necklace", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "kanu1306", name: "Kanisha", photo: "photos/photo-kanish.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "vamu1204", name: "Vama", photo: "photos/photo-vama.jpeg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "vamu1204", name: "Vama", photo: "photos/photo-vama.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "pratu2206", name: "Prarthana", photo: "photos/photo-prarth.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "dinka2510", name: "Drishti", photo: "photos/photo-drisht.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "dhruva1501", name: "Dhruvi", photo: "photos/photo-dhruvi.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "diku1905", name: "Diksha", photo: "photos/photo-diksha.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
   { password: "snehu2307", name: "Sneha", photo: "photos/photo-sneha.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
-  { password: "evu1704", name: "Eva", photo: "photos/photo-eva.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." }
+  { password: "evu1704", name: "Eva", photo: "photos/photo-eva.jpg", letter: "Even from Germany, I can feel your love, your laughter, and the comfort of having you in my life. Thank you for being my first friend and forever family. I'll always be here—just one call away." },
+  { password: "alka", name: "Alka bhua", photo: "photos/photo-alka.jpeg", isBhua: true },
+  { password: "anita", name: "Anita bhua", photo: "photos/photo-anita.jpeg", isBhua: true },
+  { password: "sheela", name: "Sheela bhua", photo: "photos/photo-sheela.jpeg", isBhua: true }
 ];
 const SONGS = [
   // One is picked at random every time someone enters a correct password.
@@ -252,6 +255,12 @@ const LETTERS = [
   "Some bonds don't need proximity to stay strong \u2014 ours is proof of that. I carry you with me wherever I go. Happy Rakshabandhan, I love you so much.",
   "Every year this thread reminds me how lucky I am to have a sister like you. Germany or India, that never changes. Happy Rakshabandhan \u2014 I'm always here for you, always.",
   "Miles apart but never far from my heart \u2014 cheesy, I know, but true. Thank you for tying rakhis on me for all these years and putting up with me. Happy Rakshabandhan, I love you."
+];
+const BHUA_LETTERS = [
+  "Even though I'm miles away in Germany, the love and blessings you've always showered on me stay close to my heart. Thank you for treating me like your own all these years. Happy Rakshabandhan \u2014 I'm always here for you, just a call away.",
+  "Distance can't change how much your love and blessings mean to me. Every Rakshabandhan reminds me of your warmth and the countless memories we've shared. Happy Rakshabandhan \u2014 sending you all my love from Germany.",
+  "Even from so far away, I carry your blessings with me every single day. Thank you for always showering me with so much affection. Happy Rakshabandhan \u2014 I love and miss you.",
+  "No matter the distance, the bond we share only grows stronger with time. Thank you for all the love and blessings you've given me over the years. Happy Rakshabandhan \u2014 I'm always thinking of you."
 ];
 const GIFT_MESSAGE = "Your gift is already on its way from Germany — until it arrives, consider this your first surprise: I love you more than any parcel could ever say.";
 const GIFT_IMAGES = {
@@ -291,7 +300,8 @@ function submitPassword(){
   currentPerson=match;
   document.getElementById('coverMini').textContent='For my dearest '+match.name;
   document.getElementById('letterSalutation').textContent='To my favourite '+match.name+',';
-  document.getElementById('letterBody').textContent=LETTERS[Math.floor(Math.random()*LETTERS.length)];
+  var pool=match.isBhua?BHUA_LETTERS:LETTERS;
+  document.getElementById('letterBody').textContent=pool[Math.floor(Math.random()*pool.length)];
   if(match.photo){
     tryLoadPhoto('festivalSlot',match.photo);
   }
